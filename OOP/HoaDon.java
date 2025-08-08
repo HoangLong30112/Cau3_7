@@ -1,4 +1,4 @@
-package Cau2.OOP;
+package working_dir.Cau3_7.OOP;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -52,14 +52,33 @@ public class HoaDon
     public  void themDienThoai(DienThoai dt){
         dienThoai.add(dt);
     }
-    
+
+    public double giamGia(DienThoai dt) {
+        for(DienThoai dienThoai : dienThoai){
+            if(dienThoai.getHangSX().equalsIgnoreCase("Samsung")){
+                return dienThoai.getGia() * 0.9;
+            }
+        }
+        return dt.getGia();
+    }
+
+    public double inGiamGia(DienThoai dt) {
+        for(DienThoai dienThoai : dienThoai){
+            if(dienThoai.getHangSX().equalsIgnoreCase("Samsung")){
+                return 10;
+            }
+        }
+        return 0;
+    }
+
+
     public  void inHoaDon(){
         System.out.println("Mã HD: " + maHD);
         System.out.println("Khách hàng: " + khachHang.getTenKH());
         System.out.println("Ngày mua: " + ngaymua);
         System.out.println("Sản phẩm:");
         for (DienThoai dt : dienThoai) {
-            System.out.println("- " + dt.getTenDT() + " (" + dt.getGia() + " VND)");
+            System.out.printf("- %s (%,.0f VND)/Giảm giá: %,.0f%%%n", dt.getTenDT(), giamGia(dt), inGiamGia(dt));
         }
     }
 }
